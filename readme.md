@@ -1,5 +1,7 @@
 ## nginx certbot startup
 
+Setup nginx with an SSL certificate and custom configuration. Based on [Jonas Alfredsson's docker-nginx-certbot repo](https://github.com/JonasAlfredsson/docker-nginx-certbot).
+
 ### 0. Create this relative folder path
 
 Folders will be created in this path in order to save certs etc.
@@ -7,7 +9,7 @@ Folders will be created in this path in order to save certs etc.
 
 ### 1. Create an external docker network
 
-Create an external docker bridge network in order to have the ability to _possibly_ connect multiple _docker composed_ services under the same network topology. 
+Create an external docker bridge network in order to have the ability to _possibly_ connect multiple _docker composed_ services running on the same machine under the same network topology. 
 `docker network create -d bridge container_network`
 
 ### 2. Modify these values before running
