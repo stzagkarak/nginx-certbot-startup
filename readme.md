@@ -48,4 +48,4 @@ In case of error, check logs using `docker logs <container_name>`
 
 ### 5. Change `app.conf` to suit your needs
 - ALWAYS Copy the previous app.conf before making changes, store it in case of fckups
-- After changes enter `docker exec -it <container_name> /bin/bash` the nginx container and run `systemctl restart nginx.service`.
+- After changes enter `docker exec -it <container_name> /bin/bash` the nginx container and run `service nginx --full-restart`.
