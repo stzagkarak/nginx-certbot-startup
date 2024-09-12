@@ -1,0 +1,34 @@
+services:
+
+  nginx: 
+    image: jonasal/nginx-certbot:${NGINX_CERTBOT_VERSION}
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+
+      # bind to image configuration file
+      - ./config/nginx-certbot.env
+    
+    restart: unless-stopped
+    
+    volumes:
+      
+      # volume ( fs bind ) to store certs
+      - ./instance/nginx/:/etc/letsencrypt
+
+      # volume ( fs bind ) to nginx config 
+      - ./config/user_conf.d:/etc/nginx/user_conf.d
+    
+    #external_links:
+    # add container names from other compose files that you want to reference as is
+    #> the containers need to be in the same network ( container_network )  
+    #- keycloak
+    
+    networks:
+      - net1
+
+networks:
+  net1:
+    name: container_network
+    external: true
